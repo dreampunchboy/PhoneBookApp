@@ -3,6 +3,8 @@
 This is an implementation of a phone book app using .NET Core WEB API with seperate services injected into the running service.
 The frontend is a nifty console application running in a simple state machine and within that multiple screens to view and maintain the phone book entries.
 
+![Preview](https://i.imgur.com/Q7dYxZY.png)
+
 To run:
  - Open the PhoneBookApp.API.sln solution file in Visual Studio
  - Set the solution as the Startup Project (right click on PhoneBookApp at the top and and select "Set startup projects")
