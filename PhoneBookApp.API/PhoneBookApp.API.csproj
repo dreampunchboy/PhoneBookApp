@@ -9,7 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PhoneBookApp.Common\PhoneBookApp.Common.csproj" />
     <ProjectReference Include="..\PhoneBookApp.Models\PhoneBookApp.Models.csproj" />
-    <ProjectReference Include="..\PhoneBookApp.PhoneBookService\PhoneBookApp.Services.csproj" />
+    <ProjectReference Include="..\PhoneBookApp.Services\PhoneBookApp.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
