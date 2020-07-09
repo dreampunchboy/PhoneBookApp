@@ -9,7 +9,7 @@ To run:
  - Set multiple projects to start: PhoneBookApp.API and PhoneBookApp.App
  - Build and run the project (NUGET packages will be restored and both the APP and API will be run.)
  
- https://i.imgur.com/pSLnIAP.png
+ ![Setting project startup](https://i.imgur.com/pSLnIAP.png)
  
  Tech Used:
   - asp.net WEB API (Core)
