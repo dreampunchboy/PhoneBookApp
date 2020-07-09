@@ -24,6 +24,7 @@ namespace PhoneBookApp.App.App
             ChangeState(AppState.Loading);
 
             ExecuteState(new StateResult());
+            Start();
         }
 
         private void SetupStates()
@@ -42,14 +43,23 @@ namespace PhoneBookApp.App.App
         /// </summary>
         private void ExecuteState(StateResult previousStateResult)
         {
-            //Execute the state
-            var result = states[currentAppState].Execute(previousStateResult);
+            try
+            {
+                //Execute the state
+                var result = states[currentAppState].Execute(previousStateResult);
 
-            //Check for changes
-            if (result.ShouldChangeState)
-                ChangeState(result.NewState);
+                //Check for changes
+                if (result.ShouldChangeState)
+                    ChangeState(result.NewState);
 
-            ExecuteState(result);
+                ExecuteState(result);
+            }
+            catch (Exception ex)
+            {
+                Console.Clear();
+                Console.WriteLine("There was an error, let's restart.");
+                return;
+            }
         }
 
         public void ChangeState(AppState newState)

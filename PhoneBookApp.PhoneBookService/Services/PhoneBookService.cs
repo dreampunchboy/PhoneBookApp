@@ -13,9 +13,6 @@ namespace PhoneBookApp.Services.Services
 {
     public class PhoneBookService : BaseService, IPhoneBookService
     {
-        //private IContext<PhoneBook, PhoneBookQueryModel> phoneBookCtx;
-        //private IContext<PhoneBookEntry, PhoneBookQueryModel> phoneBookEntryCtx;
-
         private readonly IMongoCollection<PhoneBook> phoneBooks;
         private readonly IMongoCollection<PhoneBookEntry> phoneBookEntries;
         private readonly string defaultPhoneBookName = "My PhoneBook";
@@ -27,18 +24,33 @@ namespace PhoneBookApp.Services.Services
             phoneBookEntries = _database.GetCollection<PhoneBookEntry>(collectionEntrySettings.CollectionName);
         }
 
+        /// <summary>
+        /// Add a new phone book entry
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<PhoneBookEntry> AddEntry(PhoneBookEntry model)
         {
             phoneBookEntries.InsertOne(model);
             return await Task.FromResult(model);
         }
 
+        /// <summary>
+        /// Delete a phone book entry
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<bool> DeleteEntry(string id)
         {
             await phoneBookEntries.DeleteOneAsync( Builders<PhoneBookEntry>.Filter.Eq("_id", ObjectId.Parse(id)));
             return await Task.FromResult(true);
         }
 
+        /// <summary>
+        /// Get the phone book
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<PhoneBook> GetPhoneBook(PhoneBook model)
         {
             var phoneBook = phoneBooks.Find(x => x.Name == defaultPhoneBookName);
