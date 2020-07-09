@@ -37,7 +37,7 @@ namespace PhoneBookApp.App.States
                 return;
 
             client = new HttpClient();
-            client.BaseAddress = new Uri(configuration["APIRUL"]);
+            client.BaseAddress = new Uri(configuration["APIURL"]);
             var val = "application/json";
             var media = new MediaTypeWithQualityHeaderValue(val);
             client.DefaultRequestHeaders.Accept.Clear();

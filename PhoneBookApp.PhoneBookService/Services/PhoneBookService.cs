@@ -15,7 +15,7 @@ namespace PhoneBookApp.Services.Services
     {
         private readonly IMongoCollection<PhoneBook> phoneBooks;
         private readonly IMongoCollection<PhoneBookEntry> phoneBookEntries;
-        private readonly string defaultPhoneBookName = "My PhoneBook";
+        private const string defaultPhoneBookName = "My PhoneBook";
 
         public PhoneBookService(IPhoneBookCollectionSettings collectionBookSettings, IPhoneBookEntryCollectionSettings collectionEntrySettings)
             : base(collectionBookSettings)
@@ -31,7 +31,7 @@ namespace PhoneBookApp.Services.Services
         /// <returns></returns>
         public async Task<PhoneBookEntry> AddEntry(PhoneBookEntry model)
         {
-            phoneBookEntries.InsertOne(model);
+            await phoneBookEntries.InsertOneAsync(model);
             return await Task.FromResult(model);
         }
 
@@ -69,7 +69,7 @@ namespace PhoneBookApp.Services.Services
                 model.Name = defaultPhoneBookName;
 
             var newPhoneBook = new PhoneBook() { Name = model.Name };
-            phoneBooks.InsertOne(newPhoneBook);
+            await phoneBooks.InsertOneAsync(newPhoneBook);
 
             //Rerun
             return await this.GetPhoneBook(newPhoneBook);

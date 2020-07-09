@@ -22,40 +22,19 @@ namespace PhoneBookApp.API.Controllers
 
         public async Task<PhoneBook> Get()
         {
-            try
-            {
-                return await phoneBookService.GetPhoneBook(new PhoneBook());
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return await phoneBookService.GetPhoneBook(new PhoneBook());
         }
 
         [HttpPost]
         public async Task<PhoneBookEntry> Post(PhoneBookEntry model)
         {
-            try
-            {
-                return await phoneBookService.AddEntry(model);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return await phoneBookService.AddEntry(model);
         }
 
         [HttpGet("DeleteEntry")]
         public async Task<bool> DeleteEntry(string id)
         {
-            try
-            {
-                return await phoneBookService.DeleteEntry(id);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return await phoneBookService.DeleteEntry(id);
         }
     }
 }
